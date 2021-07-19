@@ -102,7 +102,7 @@ $(function () {
 
   // email forms submit
   // todo: if two different ids still needed, at least rename the second one...
-  $('#email-form .btn, #email-form2 .btn, #email-form3 .btn').on('click', function () {
+  $('#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn').on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
   });
@@ -151,6 +151,14 @@ $('#email-form3').on('submit', function () {
       }
       window.open(url);
     }
+  });
+  
+  $('#email-form4').on('submit', function () {
+    const id = $(this).attr('id');
+    $('.w-form-done, .w-form-fail').hide();
+    const select = $(`#${id} input[type=select]`).val();
+    let url = `https://breef.chilipiper.com/book/me/caitlin-stower?select=${select}`;
+    window.open(url);
   });
 
   if ($('#download-form').length) {
