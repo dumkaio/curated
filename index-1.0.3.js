@@ -102,7 +102,7 @@ $(function () {
 
   // email forms submit
   // todo: if two different ids still needed, at least rename the second one...
-  $('#email-form .btn, #email-form2 .btn').on('click', function () {
+  $('#email-form .btn, #email-form2 .btn, #email-form3 .btn').on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
   });
@@ -114,6 +114,29 @@ $(function () {
       const email = $(`#${id} input[type=email]`).val();
       const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
       let url = `https://projects.breef.com/registration?email=${email}`;
+      if (name) {
+        url += `&name=${name}`;
+      }
+      if (_utm_source) {
+        url += `&${_utm_source}`;
+      }
+      if (_utm_medium) {
+        url += `&${_utm_medium}`;
+      }
+      if (_utm_campaign) {
+        url += `&${_utm_campaign}`;
+      }
+      window.open(url);
+    }
+  });
+
+$('#email-form3').on('submit', function () {
+    const id = $(this).attr('id');
+    $('.w-form-done, .w-form-fail').hide();
+    if ($(`#${id}`)[0].checkValidity()) {
+      const email = $(`#${id} input[type=email]`).val();
+      const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
+      let url = `https://breef.chilipiper.com/book/me/caitlin-stower?email=${email}`;
       if (name) {
         url += `&name=${name}`;
       }
