@@ -156,7 +156,7 @@ $('#email-form3').on('submit', function () {
   $('#email-form4').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
-    const select = $(`#${id} input[type=select]`).val();
+    const select = $(`#${id} input[type=select]`).text();
     let url = `https://breef.chilipiper.com/book/me/caitlin-stower?select=${select}`;
     window.open(url);
   });
