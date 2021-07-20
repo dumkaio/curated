@@ -136,7 +136,7 @@ $('#email-form3').on('submit', function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const email = $(`#${id} input[type=email]`).val();
       const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
-      let url = `https://breef.chilipiper.com/book/me/caitlin-stower?email=${email}`;
+      let url = `https://curated.chilipiper.com/book/me/caitlin-stower?email=${email}`;
       if (name) {
         url += `&name=${name}`;
       }
@@ -156,8 +156,8 @@ $('#email-form3').on('submit', function () {
   $('#email-form4').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
-    const select = $(`#${id} input[type=select]`).val();
-    let url = `https://curated.chilipiper.com/book/me/caitlin-stower?select=${select}`;
+    const service = $(`#${id} #bf-select:selected`).text();
+    let url = `https://projects.breef.com/registration?service=${service}`;
     window.open(url);
   });
 
