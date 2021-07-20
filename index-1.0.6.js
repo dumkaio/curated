@@ -156,11 +156,11 @@ $('#email-form3').on('submit', function () {
   $('#email-form4').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
-    const service = $(`#${id} #bf-select option:selected`).text();
-    let url = `https://projects.breef.com/registration?service=${service}`;
-    if (service) {
-        url += `&service=${service}`;
-      }
+//     const service = $(`#${id} #bf-select option:selected`).text();
+    let url = `https://projects.breef.com/registration`;
+//     if (service) {
+//         url += `?service=${service}`;
+//       }
     window.open(url);
   });
 
