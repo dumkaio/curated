@@ -106,6 +106,11 @@ $(function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
   });
+  
+  $('#email-form5 .btn, #email-form6 .btn').on('click', function () {
+    const formId = $(this).closest('form').attr('id');
+    $(`#${formId}`).submit();
+  });
 
   $('#email-form, #email-form2').on('submit', function () {
     const id = $(this).attr('id');
