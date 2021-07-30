@@ -114,7 +114,7 @@ $(function () {
     $(`#${formId}`).submit();
   });
   
-  $('#email-form5 .btn, #email-form6 .btn').on('click', function () {
+  $('#email-form5 .btn, #email-form6 .btn, #modal-form-call .btn').on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
   });
@@ -175,6 +175,15 @@ $('#email-form3').on('submit', function () {
 //       }
     window.open(url);
   });
+  
+  $('#modal-form-call').on('submit', function () {
+    const id = $(this).attr('id');
+    $('.w-form-done, .w-form-fail').hide();
+    let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
+    window.open(url);
+  });
+  
+  
 
   if ($('#download-form').length) {
     $('#download-form .btn').on('click', function () {
