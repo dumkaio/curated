@@ -179,8 +179,10 @@ $('#email-form3').on('submit', function () {
   $('#modal-form-call').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
-    let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
-    window.open(url);
+    if ($(`#${id}`)[0].checkValidity()) {
+      let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
+      window.open(url);
+    }
   });
   
   
