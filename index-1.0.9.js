@@ -38,6 +38,13 @@ $(function () {
       localStorage.setItem('modalWasShown', true);
     }, 3000);
   }
+  
+  if (!localStorage.getItem('modalCallWasShown')) {
+    setTimeout(() => {
+      $('.open-modal-call').click();
+      localStorage.setItem('modalCallWasShown', true);
+    }, 60000);
+  }
 
   // constants
   const orange = '#d96e34';
