@@ -217,7 +217,7 @@ $('#email-form3').on('submit', function () {
 
   function downloadFile() {
     const url =
-      'https://uploads-ssl.webflow.com/5e4d24d0d11c7440ba421ee3/6069e00df648782fc649e83a_Curated%20Marketing%20List%202021.pdf';
+      'https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing';
     fetch(url)
       .then((resp) => resp.blob())
       .then((blob) => {
