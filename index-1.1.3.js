@@ -196,7 +196,8 @@ $('#email-form3').on('submit', function () {
       if ($('#download-form').is(':invalid')) {
         return;
       } else {
-        downloadFile();
+        let url = `https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing`;
+        window.open(url);
       }
     });
   }
@@ -210,28 +211,33 @@ $('#email-form3').on('submit', function () {
       if ($('#download-form2').is(':invalid')) {
         return;
       } else {
-        downloadFile();
+        let url = `https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing`;
+        window.open(url);
       }
     });
   }
 
-  function downloadFile() {
-    const url =
-      'https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing';
-    fetch(url)
-      .then((resp) => resp.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = 'Curated Marketing List 2021';
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-      })
-      .catch(() => console.log('file download error'));
-  }
+  
+  
+  
+  
+//   function downloadFile() {
+//     const url =
+//       'https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing';
+//     fetch(url)
+//       .then((resp) => resp.blob())
+//       .then((blob) => {
+//         const url = window.URL.createObjectURL(blob);
+//         const a = document.createElement('a');
+//         a.style.display = 'none';
+//         a.href = url;
+//         a.download = 'Curated Marketing List 2021';
+//         document.body.appendChild(a);
+//         a.click();
+//         window.URL.revokeObjectURL(url);
+//       })
+//       .catch(() => console.log('file download error'));
+//   }
 
   // about page
   $('.a-cta .btn').on('click', () => {
