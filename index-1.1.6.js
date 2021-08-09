@@ -178,8 +178,7 @@ $('#email-form3').on('submit', function () {
   
   $('#modal-form-call').on('submit', function () {
     const id = $(this).attr('id');
-    $('.w-form-done, .w-form-fail, .modal-call').hide();
-    localStorage.setItem('modalCallWasShown', true);
+    $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
       let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
       window.open(url);
@@ -197,6 +196,8 @@ $('#email-form3').on('submit', function () {
       if ($('#download-form').is(':invalid')) {
         return;
       } else {
+        $('.modal-call').hide();
+        localStorage.setItem('modalCallWasShown', true);
         let url = `https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing`;
         window.open(url);
       }
