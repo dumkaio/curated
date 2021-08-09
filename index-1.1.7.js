@@ -200,6 +200,7 @@ $('#email-form3').on('submit', function () {
         localStorage.setItem('modalCallWasShown', true);
         let url = `https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing`;
         window.open(url);
+        location.reload(true);
       }
     });
   }
