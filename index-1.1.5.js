@@ -39,7 +39,7 @@ $(function () {
     }, 3000);
   }
   
-  if (!localStorage.getItem('modalCallWasShown')) && (!localStorage.getItem('modalWasShown')) {
+  if ((!localStorage.getItem('modalCallWasShown')) && (!localStorage.getItem('modalWasShown'))) {
     setTimeout(() => {
       $('.open-modal-call').click();
       localStorage.setItem('modalCallWasShown', true);
