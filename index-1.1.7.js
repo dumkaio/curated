@@ -109,12 +109,7 @@ $(function () {
 
   // email forms submit
   // todo: if two different ids still needed, at least rename the second one...
-  $('#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn').on('click', function () {
-    const formId = $(this).closest('form').attr('id');
-    $(`#${formId}`).submit();
-  });
-  
-  $('#email-form5 .btn, #email-form6 .btn, #modal-form-call .btn').on('click', function () {
+  $('#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn, #email-form5 .btn, #email-form6 .btn, #modal-form-call .btn, #referral-form .btn').on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
   });
@@ -219,7 +214,21 @@ $('#email-form3').on('submit', function () {
       }
     });
   }
-
+  
+  
+//   $('#referral-form').on('submit', function () {
+//     const id = $(this).attr('id');
+//     if (($(`#${id}`)[0].checkValidity()) && (!($( ".btn" ).hasClass( "btn--disable" )))){
+//       let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
+//       window.open(url);
+//     }
+//   });
+  
+//     else if (!($( ".btn" ).hasClass( "btn--disable" ))) {
+//       alert(`Please Refer a Brand, Marketer or Founder!`);
+//       e.preventDefault();
+//       return false;
+//     }
   
   
   
@@ -742,6 +751,13 @@ $(function () {
             return false;
           }
         }
+        if (!($( ".btn" ).hasClass( "btn--disable" ))) {
+          error = title;
+          isValid = false;
+          return false;
+        } else {
+          isValid = true;
+        }
       });
 
       return isValid;
@@ -760,7 +776,7 @@ $(function () {
           alert(`Please fill out the required field: ${error}`);
           e.preventDefault();
           return false;
-        }
+        } 
       }
 
       $('.get-started-form form').submit();
