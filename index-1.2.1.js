@@ -144,7 +144,7 @@ $(function () {
     $(`#${formId}`).submit();
   });
   
-  
+  //referral form
   $('#add-inputs-1').on('click', function () {
     $('#referral-form .btn').removeClass( "btn--disable" )
   });
@@ -154,7 +154,7 @@ $(function () {
       $(`#${formId}`).submit();
     }
   });
-  $('#referral-form .btn').on('submit', function () {
+  $('#referral-form').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
