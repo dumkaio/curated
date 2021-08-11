@@ -154,6 +154,29 @@ $(function () {
       $(`#${formId}`).submit();
     }
   });
+  $('#referral-form .btn').on('submit', function () {
+    const id = $(this).attr('id');
+    $('.w-form-done, .w-form-fail').hide();
+    if ($(`#${id}`)[0].checkValidity()) {
+      const email = $(`#${id} input[type=email]`).val();
+      const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
+      let url = `https://breef-merch.myshopify.com/58594459809/checkouts/674718e7cc9e8f24d3f9a337ac2274f6?channel=buy_button&payment=shop_pay`;
+      if (name) {
+        url += `&name=${name}`;
+      }
+      if (_utm_source) {
+        url += `&${_utm_source}`;
+      }
+      if (_utm_medium) {
+        url += `&${_utm_medium}`;
+      }
+      if (_utm_campaign) {
+        url += `&${_utm_campaign}`;
+      }
+      window.open(url);
+    } 
+  });
+  
 
   $('#email-form, #email-form2').on('submit', function () {
     const id = $(this).attr('id');
@@ -253,20 +276,6 @@ $(function () {
       }
     });
   }
-
-  //   $('#referral-form').on('submit', function () {
-  //     const id = $(this).attr('id');
-  //     if (($(`#${id}`)[0].checkValidity()) && (!($( ".btn" ).hasClass( "btn--disable" )))){
-  //       let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
-  //       window.open(url);
-  //     }
-  //   });
-
-  //     else if (!($( ".btn" ).hasClass( "btn--disable" ))) {
-  //       alert(`Please Refer a Brand, Marketer or Founder!`);
-  //       e.preventDefault();
-  //       return false;
-  //     }
 
   //   function downloadFile() {
   //     const url =
