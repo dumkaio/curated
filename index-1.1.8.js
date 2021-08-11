@@ -143,6 +143,17 @@ $(function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
   });
+  
+  
+  $('#add-inputs-1').on('click', function () {
+    $('#referral-form .btn').removeClass( "btn-disable" )
+  });
+  $('#referral-form .btn').on('click', function () {
+    const formId = $(this).closest('form').attr('id');
+    if (!($(this).hasClass( "btn--disable" ))) {
+      $(`#${formId}`).submit();
+    }
+  });
 
   $('#email-form, #email-form2').on('submit', function () {
     const id = $(this).attr('id');
