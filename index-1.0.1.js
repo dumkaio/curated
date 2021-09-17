@@ -67,11 +67,11 @@ $(function () {
     }, 3000);
   }
 
-  if (!localStorage.getItem('modalCallWasShown') && !localStorage.getItem('modalWasShown')) {
+  if (!localStorage.getItem('modalCallWasShown') && localStorage.getItem('modalWasShown')) {
     setTimeout(() => {
       $('.open-modal-call').click();
       localStorage.setItem('modalCallWasShown', true);
-    }, 60000);
+    }, 20000);
   }
 
   // constants
@@ -138,10 +138,43 @@ $(function () {
   // email forms submit
   // todo: if two different ids still needed, at least rename the second one...
   $(
-    '#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn, #email-form5 .btn, #email-form6 .btn, #modal-form-call .btn, #referral-form .btn'
+    '#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn, #email-form5 .btn, #email-form6 .btn, #modal-form-call .btn'
   ).on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
+  });
+
+  //referral form
+  $('#add-inputs-1').on('click', function () {
+    $('#referral-form .btn').removeClass('btn--disable');
+  });
+  $('#referral-form .btn').on('click', function () {
+    const formId = $(this).closest('form').attr('id');
+    if (!$(this).hasClass('btn--disable')) {
+      $(`#${formId}`).submit();
+    }
+  });
+  $('#referral-form').on('submit', function () {
+    const id = $(this).attr('id');
+    $('.w-form-done, .w-form-fail').hide();
+    if ($(`#${id}`)[0].checkValidity()) {
+      const email = $(`#${id} input[type=email]`).val();
+      const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
+      let url = `https://breef-merch.myshopify.com/58594459809/checkouts/674718e7cc9e8f24d3f9a337ac2274f6?channel=buy_button&payment=shop_pay`;
+      if (name) {
+        url += `&name=${name}`;
+      }
+      if (_utm_source) {
+        url += `&${_utm_source}`;
+      }
+      if (_utm_medium) {
+        url += `&${_utm_medium}`;
+      }
+      if (_utm_campaign) {
+        url += `&${_utm_campaign}`;
+      }
+      window.open(url);
+    }
   });
 
   $('#email-form, #email-form2').on('submit', function () {
@@ -242,20 +275,6 @@ $(function () {
       }
     });
   }
-
-  //   $('#referral-form').on('submit', function () {
-  //     const id = $(this).attr('id');
-  //     if (($(`#${id}`)[0].checkValidity()) && (!($( ".btn" ).hasClass( "btn--disable" )))){
-  //       let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
-  //       window.open(url);
-  //     }
-  //   });
-
-  //     else if (!($( ".btn" ).hasClass( "btn--disable" ))) {
-  //       alert(`Please Refer a Brand, Marketer or Founder!`);
-  //       e.preventDefault();
-  //       return false;
-  //     }
 
   //   function downloadFile() {
   //     const url =
@@ -817,3 +836,27 @@ $(function () {
     });
   }
 });
+
+// merch page
+$(function () {
+  if (location.pathname === '/merch') {
+    $('#merchEmail1, #merchEmail2, #merchEmail3').on('keyup', function () {
+      const id = $(this).attr('id');
+      $(`#${id}-error`).hide();
+    });
+    $('#merchEmail1, #merchEmail2, #merchEmail3').on('focusout', function () {
+      const id = $(this).attr('id');
+      const val = $(this).val();
+      $(`#${id}-error`).hide();
+      if (!isBusinessEmail(val)) {
+        $(`#${id}-error`).show();
+      }
+    });
+  }
+});
+
+function isBusinessEmail(email) {
+  var regex =
+    /^([\w-+\.]+@(?!gmail.com)(?!yahoo.com)(?!hotmail.com)(?!aol.com)(?!hotmail.co.uk)(?!hotmail.fr)(?!msn.com)(?!yahoo.fr)(?!wanadoo.fr)(?!orange.fr)(?!comcast.net)(?!yahoo.co.uk)(?!yahoo.com.br)(?!yahoo.co.in)(?!live.com)(?!rediffmail.com)(?!free.fr)(?!gmx.de)(?!web.de)(?!yandex.ru)(?!ymail.com)(?!libero.it)(?!outlook.com)(?!uol.com.br)(?!bol.com.br)(?!mail.ru)(?!cox.net)(?!hotmail.it)(?!sbcglobal.net)(?!sfr.fr)(?!live.fr)(?!verizon.net)(?!live.co.uk)(?!googlemail.com)(?!yahoo.es)(?!ig.com.br)(?!live.nl)(?!bigpond.com)(?!terra.com.br)(?!yahoo.it)(?!neuf.fr)(?!yahoo.de)(?!alice.it)(?!rocketmail.com)(?!att.net)(?!laposte.net)(?!facebook.com)(?!bellsouth.net)(?!yahoo.in)(?!hotmail.es)(?!charter.net)(?!yahoo.ca)(?!yahoo.com.au)(?!rambler.ru)(?!hotmail.de)(?!tiscali.it)(?!shaw.ca)(?!yahoo.co.jp)(?!sky.com)(?!earthlink.net)(?!optonline.net)(?!freenet.de)(?!t-online.de)(?!aliceadsl.fr)(?!virgilio.it)(?!home.nl)(?!qq.com)(?!telenet.be)(?!me.com)(?!yahoo.com.ar)(?!tiscali.co.uk)(?!yahoo.com.mx)(?!voila.fr)(?!gmx.net)(?!mail.com)(?!planet.nl)(?!tin.it)(?!live.it)(?!ntlworld.com)(?!arcor.de)(?!yahoo.co.id)(?!frontiernet.net)(?!hetnet.nl)(?!live.com.au)(?!yahoo.com.sg)(?!zonnet.nl)(?!club-internet.fr)(?!juno.com)(?!optusnet.com.au)(?!blueyonder.co.uk)(?!bluewin.ch)(?!skynet.be)(?!sympatico.ca)(?!windstream.net)(?!mac.com)(?!centurytel.net)(?!chello.nl)(?!live.ca)(?!aim.com)(?!bigpond.net.au)([\w-]+\.)+[\w-]{2,4})?$/;
+  return regex.test(email);
+}
