@@ -71,7 +71,7 @@ $(function () {
     setTimeout(() => {
       $('.open-modal-call').click();
       localStorage.setItem('modalCallWasShown', true);
-    }, 60000);
+    }, 20000);
   }
 
   // constants
