@@ -424,6 +424,18 @@ $(function () {
       }
     );
 
+    $('.tryloop2').hover(
+      (e) => {
+        $('.tryloop2__h').css('color', '#fff');
+        $('.tryloop2__img').hide();
+        $('.tryloop2__img-hover').css('display', 'inline-block');
+      },
+      (e) => {
+        $('.tryloop2__h').css('color', orange);
+        $('.tryloop2__img').css('display', 'inline-block');
+        $('.tryloop2__img-hover').hide();
+      }
+    );
     $('.tryloop').hover(
       (e) => {
         $('.tryloop__h').css('color', '#fff');
@@ -436,6 +448,7 @@ $(function () {
         $('.tryloop__img-hover').hide();
       }
     );
+    
   })();
 
   // pricing page, fix buttons level
@@ -526,6 +539,111 @@ $(function () {
     }
 
     $('.tryloop-list-wrap').hover(
+      () => {
+        $('#list1').stop();
+        $('#list2').stop();
+      },
+      () => {
+        anim1((tryUsWidth - parseFloat($('#list2').css('left'))) * 10);
+        anim2((tryUsWidth - (tryUsWidth + parseFloat($('#list1').css('left')))) * 10);
+      }
+    );
+
+    setTimeout(tryUs, 600);
+
+    function updateTryUs() {
+      $('#list1').stop();
+      $('#list2').stop();
+      tryUs();
+    }
+
+    setInterval(updateTryUs, 1000 * 30);
+  }
+  
+  // tryloop2
+  if ($('.tryloop2').length > 0) {
+    let initWidth = $(window).width();
+    let tryUsWidth;
+    getTryUsWidth();
+
+    if (!tryUsWidth) {
+      return;
+    }
+
+    window.addEventListener('resize', function () {
+      initWidth = $(window).width();
+
+      getTryUsWidth();
+      updateTryUs();
+    });
+
+    function getTryUsWidth() {
+      const link = $('.tryloop2-link');
+      const linkWidth = link.outerWidth(true);
+      if (linkWidth <= 0) {
+        return;
+      }
+      const tryNum = Math.ceil(initWidth / linkWidth);
+      tryUsWidth = tryNum * linkWidth;
+    }
+
+    function tryUs() {
+      getTryUsWidth();
+      const link = $('.tryloop2-link');
+      const linkWidth = link.outerWidth(true);
+      if (linkWidth <= 0) {
+        return;
+      }
+      const tryNum = Math.ceil(initWidth / linkWidth);
+
+      if (link.length > 1) {
+        $('#list1').remove();
+        link.not(':first').remove();
+      }
+
+      for (let i = 0; i < tryNum - 1; i++) {
+        link.first().clone().appendTo('.tryloop2-link');
+      }
+
+      $('.tryloop2-list-wrap').width(tryUsWidth * 3);
+
+      const list = $('.tryloop2-list');
+      list.css('left', 0).attr('id', 'list2');
+      list.first().clone().css('left', `-${tryUsWidth}px`).attr('id', 'list1').appendTo('.tryloop2-list-wrap');
+
+      anim1(tryUsWidth * 10);
+      anim2(tryUsWidth * 10);
+    }
+
+    function anim1(sec) {
+      $('#list2').animate(
+        {
+          left: tryUsWidth,
+        },
+        sec,
+        'linear',
+        () => {
+          $('#list2').css('left', 0);
+          anim1(tryUsWidth * 10);
+        }
+      );
+    }
+
+    function anim2(sec) {
+      $('#list1').animate(
+        {
+          left: 0,
+        },
+        sec,
+        'linear',
+        () => {
+          $('#list1').css('left', `-${tryUsWidth}px`);
+          anim2(tryUsWidth * 10);
+        }
+      );
+    }
+
+    $('.tryloop2-list-wrap').hover(
       () => {
         $('#list1').stop();
         $('#list2').stop();
