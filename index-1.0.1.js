@@ -64,14 +64,14 @@ $(function () {
     setTimeout(() => {
       $('.open-modal').click();
       localStorage.setItem('modalWasShown', true);
-    }, 3000);
+    }, 20000);
   }
 
   if (!localStorage.getItem('modalCallWasShown') && localStorage.getItem('modalWasShown')) {
     setTimeout(() => {
       $('.open-modal-call').click();
       localStorage.setItem('modalCallWasShown', true);
-    }, 20000);
+    }, 60000);
   }
 
   // constants
