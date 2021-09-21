@@ -200,7 +200,7 @@ $(function () {
     }
   });
 
-  $('#email-form3').on('submit', function () {
+  $('#email-form3, #email-form7').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
