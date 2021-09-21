@@ -138,7 +138,7 @@ $(function () {
   // email forms submit
   // todo: if two different ids still needed, at least rename the second one...
   $(
-    '#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn, #email-form5 .btn, #email-form6 .btn, #modal-form-call .btn'
+    '#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn, #email-form5 .btn, #email-form6 .btn, #email-form7 .btn, #modal-form-call .btn'
   ).on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
