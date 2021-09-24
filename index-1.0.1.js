@@ -443,7 +443,12 @@ $(function () {
   $('.pricing__top, .pricing__bottom').css('opacity', 100);
 
   // tryloop
-  if ($('.tryloop').length > 0) {
+  // if ($('.tryloop').length > 0) {
+  $('.tryloop').each(function (i) {
+    const self = this;
+    let listOneId = 'list1' + i;
+    let listTwoId = 'list2' + i;
+
     let initWidth = $(window).width();
     let tryUsWidth;
     getTryUsWidth();
@@ -460,7 +465,7 @@ $(function () {
     });
 
     function getTryUsWidth() {
-      const link = $('.tryloop-link');
+      const link = $(self).find('.tryloop-link');
       const linkWidth = link.outerWidth(true);
       if (linkWidth <= 0) {
         return;
@@ -471,7 +476,7 @@ $(function () {
 
     function tryUs() {
       getTryUsWidth();
-      const link = $('.tryloop-link');
+      const link = $(self).find('.tryloop-link');
       const linkWidth = link.outerWidth(true);
       if (linkWidth <= 0) {
         return;
@@ -479,73 +484,74 @@ $(function () {
       const tryNum = Math.ceil(initWidth / linkWidth);
 
       if (link.length > 1) {
-        $('#list1').remove();
+        $(self).find(`#${listOneId}`).remove();
         link.not(':first').remove();
       }
 
       for (let i = 0; i < tryNum - 1; i++) {
-        link.first().clone().appendTo('.tryloop-list');
+        link.first().clone().appendTo($(self).find('.tryloop-list'));
       }
 
-      $('.tryloop-list-wrap').width(tryUsWidth * 3);
+      $(self).find('.tryloop-list-wrap').width(tryUsWidth * 3);
 
-      const list = $('.tryloop-list');
-      list.css('left', 0).attr('id', 'list2');
-      list.first().clone().css('left', `-${tryUsWidth}px`).attr('id', 'list1').appendTo('.tryloop-list-wrap');
+      const list = $(self).find('.tryloop-list');
+      list.css('left', 0).attr('id', listTwoId);
+      list.first().clone().css('left', `-${tryUsWidth}px`).attr('id', listOneId).appendTo($(self).find('.tryloop-list-wrap'));
 
       anim1(tryUsWidth * 10);
       anim2(tryUsWidth * 10);
     }
 
     function anim1(sec) {
-      $('#list2').animate(
+      $(self).find(`#${listTwoId}`).animate(
         {
           left: tryUsWidth,
         },
         sec,
         'linear',
         () => {
-          $('#list2').css('left', 0);
+          $(self).find(`#${listTwoId}`).css('left', 0);
           anim1(tryUsWidth * 10);
         }
       );
     }
 
     function anim2(sec) {
-      $('#list1').animate(
+      $(self).find(`#${listOneId}`).animate(
         {
           left: 0,
         },
         sec,
         'linear',
         () => {
-          $('#list1').css('left', `-${tryUsWidth}px`);
+          $(self).find(`#${listOneId}`).css('left', `-${tryUsWidth}px`);
           anim2(tryUsWidth * 10);
         }
       );
     }
 
-    $('.tryloop-list-wrap').hover(
+    $(self).find('.tryloop-list-wrap').hover(
       () => {
-        $('#list1').stop();
-        $('#list2').stop();
+        $(self).find(`#${listOneId}`).stop();
+        $(self).find(`#${listTwoId}`).stop();
       },
       () => {
-        anim1((tryUsWidth - parseFloat($('#list2').css('left'))) * 10);
-        anim2((tryUsWidth - (tryUsWidth + parseFloat($('#list1').css('left')))) * 10);
+        anim1((tryUsWidth - parseFloat($(self).find(`#${listTwoId}`).css('left'))) * 10);
+        anim2((tryUsWidth - (tryUsWidth + parseFloat($(self).find(`#${listOneId}`).css('left')))) * 10);
       }
     );
 
     setTimeout(tryUs, 600);
 
     function updateTryUs() {
-      $('#list1').stop();
-      $('#list2').stop();
+      $(self).find(`#${listOneId}`).stop();
+      $(self).find(`#${listTwoId}`).stop();
       tryUs();
     }
 
     setInterval(updateTryUs, 1000 * 30);
-  }
+  });
+  // }
 
   // services auto scroll
   if ($('.services-list').length > 0) {
