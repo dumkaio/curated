@@ -856,6 +856,26 @@ $(function () {
       $(`#${id}-error`).hide();
       if (!isBusinessEmail(val)) {
         $(`#${id}-error`).show();
+        return;
+      }
+      const one = $('#merchEmail1').val();
+      const two = $('#merchEmail2').val();
+      const three = $('#merchEmail3').val();
+
+      if (id === 'merchEmail1') {
+        if (val === two || val === three) {
+          $(`#${id}-error-dup`).show();
+        }
+      }
+      if (id === 'merchEmail2') {
+        if (val === one || val === three) {
+          $(`#${id}-error-dup`).show();
+        }
+      }
+      if (id === 'merchEmail3') {
+        if (val === one || val === two) {
+          $(`#${id}-error-dup`).show();
+        }
       }
     });
   }
