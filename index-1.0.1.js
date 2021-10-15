@@ -206,7 +206,7 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const email = $(`#${id} input[type=email]`).val();
       const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
-      let url = `https://breef.chilipiper.com/book/me/caitlin-stower?email=${email}`;
+      let url = `https://calendly.com/brand-lead/intro-call/`;
       if (name) {
         url += `&name=${name}`;
       }
@@ -238,7 +238,7 @@ $(function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
-      let url = `https://breef.chilipiper.com/book/me/caitlin-stower/`;
+      let url = `https://calendly.com/brand-lead/intro-call/`;
       window.open(url);
     }
   });
