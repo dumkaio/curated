@@ -492,54 +492,67 @@ $(function () {
         link.first().clone().appendTo($(self).find('.tryloop-list'));
       }
 
-      $(self).find('.tryloop-list-wrap').width(tryUsWidth * 3);
+      $(self)
+        .find('.tryloop-list-wrap')
+        .width(tryUsWidth * 3);
 
       const list = $(self).find('.tryloop-list');
       list.css('left', 0).attr('id', listTwoId);
-      list.first().clone().css('left', `-${tryUsWidth}px`).attr('id', listOneId).appendTo($(self).find('.tryloop-list-wrap'));
+      list
+        .first()
+        .clone()
+        .css('left', `-${tryUsWidth}px`)
+        .attr('id', listOneId)
+        .appendTo($(self).find('.tryloop-list-wrap'));
 
       anim1(tryUsWidth * 10);
       anim2(tryUsWidth * 10);
     }
 
     function anim1(sec) {
-      $(self).find(`#${listTwoId}`).animate(
-        {
-          left: tryUsWidth,
-        },
-        sec,
-        'linear',
-        () => {
-          $(self).find(`#${listTwoId}`).css('left', 0);
-          anim1(tryUsWidth * 10);
-        }
-      );
+      $(self)
+        .find(`#${listTwoId}`)
+        .animate(
+          {
+            left: tryUsWidth,
+          },
+          sec,
+          'linear',
+          () => {
+            $(self).find(`#${listTwoId}`).css('left', 0);
+            anim1(tryUsWidth * 10);
+          }
+        );
     }
 
     function anim2(sec) {
-      $(self).find(`#${listOneId}`).animate(
-        {
-          left: 0,
-        },
-        sec,
-        'linear',
-        () => {
-          $(self).find(`#${listOneId}`).css('left', `-${tryUsWidth}px`);
-          anim2(tryUsWidth * 10);
-        }
-      );
+      $(self)
+        .find(`#${listOneId}`)
+        .animate(
+          {
+            left: 0,
+          },
+          sec,
+          'linear',
+          () => {
+            $(self).find(`#${listOneId}`).css('left', `-${tryUsWidth}px`);
+            anim2(tryUsWidth * 10);
+          }
+        );
     }
 
-    $(self).find('.tryloop-list-wrap').hover(
-      () => {
-        $(self).find(`#${listOneId}`).stop();
-        $(self).find(`#${listTwoId}`).stop();
-      },
-      () => {
-        anim1((tryUsWidth - parseFloat($(self).find(`#${listTwoId}`).css('left'))) * 10);
-        anim2((tryUsWidth - (tryUsWidth + parseFloat($(self).find(`#${listOneId}`).css('left')))) * 10);
-      }
-    );
+    $(self)
+      .find('.tryloop-list-wrap')
+      .hover(
+        () => {
+          $(self).find(`#${listOneId}`).stop();
+          $(self).find(`#${listTwoId}`).stop();
+        },
+        () => {
+          anim1((tryUsWidth - parseFloat($(self).find(`#${listTwoId}`).css('left'))) * 10);
+          anim2((tryUsWidth - (tryUsWidth + parseFloat($(self).find(`#${listOneId}`).css('left')))) * 10);
+        }
+      );
 
     setTimeout(tryUs, 600);
 
@@ -850,32 +863,71 @@ $(function () {
       const id = $(this).attr('id');
       $(`#${id}-error`).hide();
     });
+
+    let oneOldVal;
+    let twoOldVal;
+    let threeOldVal;
+
+    $('#merchEmail1, #merchEmail2, #merchEmail3').on('focusin', function () {
+      oneOldVal = $('#merchEmail1').val();
+      twoOldVal = $('#merchEmail2').val();
+      threeOldVal = $('#merchEmail3').val();
+    });
+
+    let preventSubmit = false;
+
     $('#merchEmail1, #merchEmail2, #merchEmail3').on('focusout', function () {
       const id = $(this).attr('id');
-      const val = $(this).val();
-      $(`#${id}-error`).hide();
-      if (!isBusinessEmail(val)) {
-        $(`#${id}-error`).show();
-        return;
-      }
+
       const one = $('#merchEmail1').val();
       const two = $('#merchEmail2').val();
       const three = $('#merchEmail3').val();
 
-      if (id === 'merchEmail1') {
-        if (val === two || val === three) {
-          $(`#${id}-error-dup`).show();
+      if (
+        (id === 'merchEmail1' && one === oneOldVal) ||
+        (id === 'merchEmail2' && two === twoOldVal) ||
+        (id === 'merchEmail3' && three === threeOldVal)
+      ) {
+        return;
+      }
+
+      const val = $(this).val();
+      $(`#${id}-error`).hide();
+      $(`#merchEmail1-error-dup`).hide();
+      $(`#merchEmail2-error-dup`).hide();
+      $(`#merchEmail3-error-dup`).hide();
+      preventSubmit = false;
+      if (!isBusinessEmail(val)) {
+        $(`#${id}-error`).show();
+        return;
+      }
+
+      if (val !== '') {
+        if (id === 'merchEmail1') {
+          if (val === two || val === three) {
+            $(`#${id}-error-dup`).show();
+            preventSubmit = true;
+          }
+        }
+        if (id === 'merchEmail2') {
+          if (val === one || val === three) {
+            $(`#${id}-error-dup`).show();
+            preventSubmit = true;
+          }
+        }
+        if (id === 'merchEmail3') {
+          if (val === one || val === two) {
+            $(`#${id}-error-dup`).show();
+            preventSubmit = true;
+          }
         }
       }
-      if (id === 'merchEmail2') {
-        if (val === one || val === three) {
-          $(`#${id}-error-dup`).show();
-        }
-      }
-      if (id === 'merchEmail3') {
-        if (val === one || val === two) {
-          $(`#${id}-error-dup`).show();
-        }
+    });
+
+    $('.referral-form').submit((e) => {
+      if (preventSubmit) {
+        e.preventDefault();
+        return false;
       }
     });
   }
