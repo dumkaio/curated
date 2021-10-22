@@ -36,6 +36,11 @@ $(function () {
   const utm_medium = urlParams.get('utm_medium');
   let _utm_campaign = '';
   const utm_campaign = urlParams.get('utm_campaign');
+  
+  let _utm_content = '';
+  const utm_content = urlParams.get('utm_content');
+  let _utm_term = '';
+  const utm_term = urlParams.get('utm_term');
 
   if (utm_source) {
     $('a').attr('href', (i, h) => {
@@ -56,6 +61,20 @@ $(function () {
       _utm_campaign = `utm_campaign=${utm_campaign}`;
       const sym = h.indexOf('?') !== -1 ? '&' : '?';
       return h + sym + `${_utm_campaign}`;
+    });
+  }
+  if (utm_content) {
+    $('a').attr('href', (i, h) => {
+      _utm_content = `utm_content=${utm_content}`;
+      const sym = h.indexOf('?') !== -1 ? '&' : '?';
+      return h + sym + `${_utm_content}`;
+    });
+  }
+  if (utm_term) {
+    $('a').attr('href', (i, h) => {
+      _utm_term = `utm_term=${utm_term}`;
+      const sym = h.indexOf('?') !== -1 ? '&' : '?';
+      return h + sym + `${_utm_term}`;
     });
   }
 
@@ -173,6 +192,12 @@ $(function () {
       if (_utm_campaign) {
         url += `&${_utm_campaign}`;
       }
+      if (_utm_content) {
+        url += `&${_utm_content}`;
+      }
+      if (_utm_term) {
+        url += `&${_utm_term}`;
+      }
       window.open(url);
     }
   });
@@ -196,6 +221,12 @@ $(function () {
       if (_utm_campaign) {
         url += `&${_utm_campaign}`;
       }
+      if (_utm_content) {
+        url += `&${_utm_content}`;
+      }
+      if (_utm_term) {
+        url += `&${_utm_term}`;
+      }
       window.open(url);
     }
   });
@@ -218,6 +249,12 @@ $(function () {
       }
       if (_utm_campaign) {
         url += `&${_utm_campaign}`;
+      }
+      if (_utm_content) {
+        url += `&${_utm_content}`;
+      }
+      if (_utm_term) {
+        url += `&${_utm_term}`;
       }
       window.open(url);
     }
@@ -767,6 +804,12 @@ $(function () {
     }
     if (query.get('utm_campaign')) {
       $('form').append(`<input type="hidden" name="utm_campaign" value="${query.get('utm_campaign')}"/>`);
+    }
+    if (query.get('utm_content')) {
+      $('form').append(`<input type="hidden" name="utm_content" value="${query.get('utm_content')}"/>`);
+    }
+    if (query.get('utm_term')) {
+      $('form').append(`<input type="hidden" name="utm_term" value="${query.get('utm_term')}"/>`);
     }
 
     function formValid() {
