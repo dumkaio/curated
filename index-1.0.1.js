@@ -757,7 +757,7 @@ const interval = setInterval(() => {
   // change intercom init icon
   if ($('.intercom-launcher').length) {
     const img = document.createElement('IMG');
-    img.src = 'https://uploads-ssl.webflow.com/5e4d24d0d11c7440ba421ee3/5e53ee59678f9f69af229251_cloud.svg';
+    img.src = 'https://uploads-ssl.webflow.com/5e4d24d0d11c7440ba421ee3/6192a98e639fbeab2dd5cfdc_fav.svg';
     $('.intercom-launcher div svg').first().remove();
     $('.intercom-launcher div').first().prepend(img);
     $('.intercom-launcher').css({ background: 'transparent', 'box-shadow': 'none' });
@@ -778,7 +778,7 @@ const finterval = setInterval(() => {
     const inter = setInterval(() => {
       if (iframe.find('.intercom-launcher').length) {
         const img = document.createElement('IMG');
-        img.src = 'https://uploads-ssl.webflow.com/5e4d24d0d11c7440ba421ee3/5e53ee59678f9f69af229251_cloud.svg';
+        img.src = 'https://uploads-ssl.webflow.com/5e4d24d0d11c7440ba421ee3/6192a98e639fbeab2dd5cfdc_fav.svg';
         iframe.find('.intercom-launcher div svg').first().remove();
         iframe.find('.intercom-launcher div').first().prepend(img);
         iframe.find('.intercom-launcher').css('background', 'transparent');
