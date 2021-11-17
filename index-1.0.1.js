@@ -94,7 +94,7 @@ $(function () {
   }
 
   // constants
-  const orange = '#d96e34';
+  const orange = '#9B421C';
   const purple = '#f1eafb';
 
   // home page
