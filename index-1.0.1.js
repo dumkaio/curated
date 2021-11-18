@@ -207,10 +207,18 @@ $(function () {
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
       const email = $(`#${id} input[type=email]`).val();
-      const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
+      const firstName = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
+      const lastName = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
+      const companyName = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
       let url = `https://projects.breef.com/registration?email=${email}`;
-      if (name) {
-        url += `&name=${name}`;
+      if (firstName) {
+        url += `&first_name=${firstName}`;
+      }
+      if (lastName) {
+        url += `&last_name=${lastName}`;
+      }
+      if (companyName) {
+        url += `&company=${companyName}`;
       }
       if (_utm_source) {
         url += `&${_utm_source}`;
