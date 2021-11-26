@@ -321,6 +321,29 @@ $(function () {
     });
   }
 
+// Join Team Agenct Selected
+$(
+    '#email-form--agency .btn'
+  ).on('click', function () {
+    const formId = $(this).closest('form').attr('id');
+    $(`#${formId}`).submit();
+  });
+
+$('#email-form--agency').on('submit', function () {
+    const id = $(this).attr('id');
+    $('.w-form-done, .w-form-fail').hide();
+    if ($(`#${id}`)[0].checkValidity()) {
+      const email = $(`#${id} input#email`).val();
+      const firstName = $(`#${id} input#firstName`) ? $(`#${id} input#firstName`).val() : '';
+      let url = `https://projects.breef.com/registration?type=agency&email=${email}`;
+      if (firstName) {
+        url += `&first_name=${firstName}`;
+      }
+      window.open(url);
+    }
+  });
+// End Join Team Agenct Selected
+  
   //   function downloadFile() {
   //     const url =
   //       'https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing';
