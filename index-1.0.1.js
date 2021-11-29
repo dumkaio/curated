@@ -228,7 +228,7 @@ $(function () {
       if (companyName) {
         url += `&company=${companyName}`;
       }
-      if (type) {
+      if (type === 'Agency') {
         url += `&type=${type}`;
       }
       if (_utm_source) {
