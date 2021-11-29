@@ -217,6 +217,7 @@ $(function () {
       const firstName = $(`#${id} input#firstName`) ? $(`#${id} input#firstName`).val() : '';
       const lastName = $(`#${id} input#lastName`) ? $(`#${id} input#lastName`).val() : '';
       const companyName = $(`#${id} input#companyName`) ? $(`#${id} input#companyName`).val() : '';
+      const type = $(`#${id} input[name="business"]:checked`) ? $(`#${id} input[name="business"]:checked`).val() : '';
       let url = `https://projects.breef.com/registration?email=${email}`;
       if (firstName) {
         url += `&first_name=${firstName}`;
@@ -226,6 +227,9 @@ $(function () {
       }
       if (companyName) {
         url += `&company=${companyName}`;
+      }
+      if (type) {
+        url += `&type=${type}`;
       }
       if (_utm_source) {
         url += `&${_utm_source}`;
