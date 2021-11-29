@@ -92,6 +92,13 @@ $(function () {
       localStorage.setItem('modalCallWasShown', true);
     }, 60000);
   }
+  
+  if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalWasShown')) {
+    setTimeout(() => {
+      $('.open-merch-call').click();
+      localStorage.setItem('modalMerchWasShown', true);
+    }, 20000);
+  }
 
   // constants
   const orange = '#9B421C';
