@@ -283,7 +283,7 @@ $(function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
-      let url = `https://calendly.com/brand-lead/intro-call/`;
+      let url = `https://calendly.com/brand-lead/intro-call?utm_source=website_ribbon`;
       window.open(url);
     }
   });
