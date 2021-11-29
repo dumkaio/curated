@@ -95,7 +95,7 @@ $(function () {
   
   if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalWasShown')) {
     setTimeout(() => {
-      $('.open-merch-call').click();
+      $('.open-modal-merch').click();
       localStorage.setItem('modalMerchWasShown', true);
     }, 20000);
   }
