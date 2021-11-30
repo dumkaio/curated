@@ -256,25 +256,8 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const email = $(`#${id} input[type=email]`).val();
       const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
-      let url = `https://calendly.com/brand-lead/intro-call/`;
-      if (name) {
-        url += `&name=${name}`;
-      }
-      if (_utm_source) {
-        url += `&${_utm_source}`;
-      }
-      if (_utm_medium) {
-        url += `&${_utm_medium}`;
-      }
-      if (_utm_campaign) {
-        url += `&${_utm_campaign}`;
-      }
-      if (_utm_content) {
-        url += `&${_utm_content}`;
-      }
-      if (_utm_term) {
-        url += `&${_utm_term}`;
-      }
+      const utm = $(`#${id}`).data('utm');
+      let url = `https://calendly.com/brand-lead/intro-call?booking_source=${utm}`;
       window.open(url);
     }
   });
@@ -282,11 +265,7 @@ $(function () {
   $('#email-form4').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
-    //     const service = $(`#${id} #bf-select option:selected`).text();
     let url = `https://projects.breef.com/registration`;
-    //     if (service) {
-    //         url += `?service=${service}`;
-    //       }
     window.open(url);
   });
 
@@ -294,8 +273,8 @@ $(function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
-      let url = `https://calendly.com/brand-lead/intro-call?utm_source=website_ribbon`;
-      window.open(url);
+      const utm = $(`#${id}`).data('utm');
+      let url = `https://calendly.com/brand-lead/intro-call?booking_source=${utm}`;
     }
   });
 
@@ -312,7 +291,6 @@ $(function () {
         localStorage.setItem('modalCallWasShown', true);
         let url = `https://drive.google.com/file/d/1CQbLB0Y60kwbnDQL0XZiKgfQTCCWJ56q/view`;
         window.open(url);
-        // location.reload(true);
       }
     });
   }
