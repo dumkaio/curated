@@ -254,8 +254,6 @@ $(function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
-      const email = $(`#${id} input[type=email]`).val();
-      const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
       const utm = $(`#${id}`).data('utm');
       let url = `https://calendly.com/brand-lead/intro-call?booking_source=${utm}`;
       window.open(url);
@@ -275,6 +273,7 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const utm = $(`#${id}`).data('utm');
       let url = `https://calendly.com/brand-lead/intro-call?booking_source=${utm}`;
+      window.open(url);
     }
   });
 
