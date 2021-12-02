@@ -986,7 +986,7 @@ $(function () {
       }
     });
 
-    $('.referral-form').submit((e) => {
+    $('#referral-form').submit((e) => {
       if (preventSubmit) {
         e.preventDefault();
         return false;
