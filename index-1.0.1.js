@@ -920,7 +920,7 @@ $(function () {
 
 // merch page
 $(function () {
-  if (location.pathname === '/merch') {
+  if ( (location.pathname === '/merch') || (location.pathname === '/get-started/download') || (location.pathname === '/get-started/rt-2') || (location.pathname === '/get-started/ps') || (location.pathname === '/get-started/services') ) {
     $('#merchEmail1, #merchEmail2, #merchEmail3').on('keyup', function () {
       const id = $(this).attr('id');
       $(`#${id}-error`).hide();
