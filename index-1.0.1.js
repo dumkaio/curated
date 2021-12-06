@@ -213,7 +213,7 @@ $(function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
-      const email = $(`#${id} input#email`).val();
+      const email = $(`#${id} input[type="email"]`).val();
       const firstName = $(`#${id} input#firstName`) ? $(`#${id} input#firstName`).val() : '';
       const lastName = $(`#${id} input#lastName`) ? $(`#${id} input#lastName`).val() : '';
       const companyName = $(`#${id} input#companyName`) ? $(`#${id} input#companyName`).val() : '';
@@ -321,7 +321,7 @@ $('#email-form--agency').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
-      const email = $(`#${id} input#email`).val();
+      const email = $(`#${id} input[type="email"]`).val();
       const firstName = $(`#${id} input#firstName`) ? $(`#${id} input#firstName`).val() : '';
       let url = `https://projects.breef.com/registration?type=agency&email=${email}`;
       if (firstName) {
