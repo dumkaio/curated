@@ -272,7 +272,7 @@ $(function () {
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
       const utm = $(`#${id}`).data('utm');
-      let url = `https://calendly.com/brand-lead/intro-call?booking_source=${utm}`;
+      let url = `https://breef.com/lets-chat?booking_source=${utm}`;
       window.open(url);
     }
   });
