@@ -256,7 +256,7 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const utm = $(`#${id}`).data('utm');
       let url = `https://breef.com/lets-chat?booking_source=${utm}`;
-      window.open(url);
+      window.open(url,"_self");
     }
   });
 
@@ -273,7 +273,7 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const utm = $(`#${id}`).data('utm');
       let url = `https://breef.com/lets-chat?booking_source=${utm}`;
-      window.open(url);
+      window.open(url,"_self");
     }
   });
 
