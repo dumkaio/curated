@@ -36,7 +36,7 @@ $(function () {
   const utm_medium = urlParams.get('utm_medium');
   let _utm_campaign = '';
   const utm_campaign = urlParams.get('utm_campaign');
-  
+
   let _utm_content = '';
   const utm_content = urlParams.get('utm_content');
   let _utm_term = '';
@@ -92,7 +92,7 @@ $(function () {
       localStorage.setItem('modalCallWasShown', true);
     }, 60000);
   }
-  
+
   if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalWasShown')) {
     setTimeout(() => {
       $('.open-modal-merch').click();
@@ -256,7 +256,7 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const utm = $(`#${id}`).data('utm');
       let url = `https://breef.com/lets-chat?booking_source=${utm}`;
-      window.open(url,"_self");
+      window.open(url, '_self');
     }
   });
 
@@ -273,7 +273,7 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const utm = $(`#${id}`).data('utm');
       let url = `https://breef.com/lets-chat?booking_source=${utm}`;
-      window.open(url,"_self");
+      window.open(url, '_self');
     }
   });
 
@@ -309,15 +309,13 @@ $(function () {
     });
   }
 
-// Join Team Agenct Selected
-$(
-    '#email-form--agency .btn'
-  ).on('click', function () {
+  // Join Team Agenct Selected
+  $('#email-form--agency .btn').on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
   });
 
-$('#email-form--agency').on('submit', function () {
+  $('#email-form--agency').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
@@ -330,8 +328,8 @@ $('#email-form--agency').on('submit', function () {
       window.open(url);
     }
   });
-// End Join Team Agenct Selected
-  
+  // End Join Team Agenct Selected
+
   //   function downloadFile() {
   //     const url =
   //       'https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing';
@@ -920,7 +918,13 @@ $(function () {
 
 // merch page
 $(function () {
-  if ( (location.pathname === '/merch') || (location.pathname === '/get-started/download') || (location.pathname === '/get-started/rt-2') || (location.pathname === '/get-started/ps') || (location.pathname === '/get-started/services') ) {
+  if (
+    location.pathname === '/merch' ||
+    location.pathname === '/get-started/download' ||
+    location.pathname === '/get-started/rt-2' ||
+    location.pathname === '/get-started/ps' ||
+    location.pathname === '/get-started/services'
+  ) {
     $('#merchEmail1, #merchEmail2, #merchEmail3').on('keyup', function () {
       const id = $(this).attr('id');
       $(`#${id}-error`).hide();

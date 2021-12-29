@@ -5,7 +5,7 @@ const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 
 task('js', function (done) {
-  src('./index-1.0.1.js')
+  src(['./index-1.0.1.js', './calendly.js'])
     .pipe(plumber())
     .pipe(
       babel({
