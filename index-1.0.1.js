@@ -78,8 +78,8 @@ $(function () {
     });
   }
 
-  // modal window
-  if (!localStorage.getItem('modalWasShown')) {
+  // modal window original
+  /*if (!localStorage.getItem('modalWasShown')) {
     setTimeout(() => {
       $('.open-modal').click();
       localStorage.setItem('modalWasShown', true);
@@ -94,6 +94,28 @@ $(function () {
   }
 
   if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalWasShown')) {
+    setTimeout(() => {
+      $('.open-modal-merch').click();
+      localStorage.setItem('modalMerchWasShown', true);
+    }, 20000);
+  }*/
+
+  // modal window changed
+  if (!localStorage.getItem('modalCallWasShown')) {
+    setTimeout(() => {
+      $('.open-modal-call').click();
+      localStorage.setItem('modalCallWasShown', true);
+    }, 20000);
+  }
+
+  if (!localStorage.getItem('modalWasShown') && localStorage.getItem('modalCallWasShown')) {
+    setTimeout(() => {
+      $('.open-modal').click();
+      localStorage.setItem('modalWasShown', true);
+    }, 60000);
+  }
+
+  if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalCallWasShown')) {
     setTimeout(() => {
       $('.open-modal-merch').click();
       localStorage.setItem('modalMerchWasShown', true);
