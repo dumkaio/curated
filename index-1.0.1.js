@@ -115,7 +115,7 @@ $(function () {
     }, 60000);
   }
 
-  if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalCallWasShown')) {
+  if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalWasShown')) {
     setTimeout(() => {
       $('.open-modal-merch').click();
       localStorage.setItem('modalMerchWasShown', true);
