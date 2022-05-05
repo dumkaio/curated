@@ -79,7 +79,7 @@ $(function () {
   }
 
   // modal window original
-  /*if (!localStorage.getItem('modalWasShown')) {
+  if (!localStorage.getItem('modalWasShown')) {
     setTimeout(() => {
       $('.open-modal').click();
       localStorage.setItem('modalWasShown', true);
@@ -98,10 +98,10 @@ $(function () {
       $('.open-modal-merch').click();
       localStorage.setItem('modalMerchWasShown', true);
     }, 20000);
-  }*/
+  }
 
   // modal window changed
-  if (!localStorage.getItem('modalCallWasShown')) {
+  /*if (!localStorage.getItem('modalCallWasShown')) {
     setTimeout(() => {
       $('.open-modal-call').click();
       localStorage.setItem('modalCallWasShown', true);
@@ -120,7 +120,7 @@ $(function () {
       $('.open-modal-merch').click();
       localStorage.setItem('modalMerchWasShown', true);
     }, 20000);
-  }
+  }*/
 
   // constants
   const orange = '#9B421C';
