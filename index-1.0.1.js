@@ -186,7 +186,7 @@ $(function () {
   // email forms submit
   // todo: if two different ids still needed, at least rename the second one...
   $(
-    '#email-form .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn, #email-form5 .btn, #email-form6 .btn, #email-form7 .btn, #modal-form-call .btn'
+    '#email-form .btn, #email-form-subscribe .btn, #email-form2 .btn, #email-form3 .btn, #email-form4 .btn, #email-form5 .btn, #email-form6 .btn, #email-form7 .btn, #modal-form-call .btn'
   ).on('click', function () {
     const formId = $(this).closest('form').attr('id');
     $(`#${formId}`).submit();
@@ -231,10 +231,50 @@ $(function () {
     }
   });
 
+  $('#email-form-subscribe').on('submit', function () {
+    const id = $(this).attr('id');
+    $('.w-form-done, .w-form-fail').hide();
+    if ($(`#${id}`)[0].checkValidity()) {
+      
+      const client_type_1 = $(`#${id} #client_type_1`).val();
+      const client_type_5 = $(`#${id} #client_type_5`).val();
+      const client_type_2 = $(`#${id} #client_type_2`).val();
+      const external_partners_1 = $(`#${id} #external_partners_1`).val();
+      const external_partners_2 = $(`#${id} #external_partners_2`).val();
+      const external_partners_3 = $(`#${id} #external_partners_3`).val(); 
+      
+      
+      let url = `https://projects.breef.com/registration`;
+      if (client_type_1) {
+        url += `?client_type=${client_type_1}`;
+      }
+      if (client_type_5) {
+        url += `?client_type=${client_type_5}`;
+      }
+      if (client_type_2) {
+        url += `?client_type=${client_type_2}`;
+      }
+      if (external_partners_1) {
+        url += `&external_partners=${external_partners_1}`;
+      }
+      if (external_partners_2) {
+        url += `&external_partners=${external_partners_2}`;
+      }
+      if (external_partners_3) {
+        url += `&external_partners=${external_partners_3}`;
+      }
+      
+      
+      window.open(url);
+    }
+  });
+  
+  
   $('#email-form, #email-form2').on('submit', function () {
     const id = $(this).attr('id');
     $('.w-form-done, .w-form-fail').hide();
     if ($(`#${id}`)[0].checkValidity()) {
+      
       const email = $(`#${id} input[type="email"]`).val();
       const firstName = $(`#${id} input#firstName`) ? $(`#${id} input#firstName`).val() : '';
       const lastName = $(`#${id} input#lastName`) ? $(`#${id} input#lastName`).val() : '';
