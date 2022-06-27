@@ -230,44 +230,6 @@ $(function () {
       window.open(url);
     }
   });
-
-  $('#email-form-subscribe').on('submit', function () {
-    const id = $(this).attr('id');
-    $('.w-form-done, .w-form-fail').hide();
-    if ($(`#${id}`)[0].checkValidity()) {
-      
-      const client_type_1 = $(`#${id} #client_type_1`).val();
-      const client_type_5 = $(`#${id} #client_type_5`).val();
-      const client_type_2 = $(`#${id} #client_type_2`).val();
-      const external_partners_1 = $(`#${id} #external_partners_1`).val();
-      const external_partners_2 = $(`#${id} #external_partners_2`).val();
-      const external_partners_3 = $(`#${id} #external_partners_3`).val(); 
-      
-      
-      let url = `https://projects.breef.com/registration`;
-      if (client_type_1) {
-        url += `?client_type=${client_type_1}`;
-      }
-      if (client_type_5) {
-        url += `?client_type=${client_type_5}`;
-      }
-      if (client_type_2) {
-        url += `?client_type=${client_type_2}`;
-      }
-      if (external_partners_1) {
-        url += `&external_partners=${external_partners_1}`;
-      }
-      if (external_partners_2) {
-        url += `&external_partners=${external_partners_2}`;
-      }
-      if (external_partners_3) {
-        url += `&external_partners=${external_partners_3}`;
-      }
-      
-      
-      window.open(url);
-    }
-  });
   
   
   $('#email-form, #email-form2').on('submit', function () {
