@@ -312,7 +312,7 @@ $(function () {
       } else {
         $('.modal-call').hide();
         localStorage.setItem('modalCallWasShown', true);
-        let url = `https://drive.google.com/file/d/1RuBd5b_aZj02-4UwOkk4x6JMhhOfWuVs/view?usp=sharing`;
+        let url = `https://drive.google.com/file/d/1P68KfDG00RNs6CBlPhtmpV8P5dm4_9gJ/view?usp=sharing`;
         window.open(url);
       }
     });
@@ -327,7 +327,7 @@ $(function () {
       if ($('#download-form2').is(':invalid')) {
         return;
       } else {
-        let url = `https://drive.google.com/file/d/1RuBd5b_aZj02-4UwOkk4x6JMhhOfWuVs/view?usp=sharing`;
+        let url = `https://drive.google.com/file/d/1P68KfDG00RNs6CBlPhtmpV8P5dm4_9gJ/view?usp=sharing`;
         window.open(url);
       }
     });
